@@ -1,0 +1,27 @@
+rgb -> acender
+    -> apagar
+    -> mudar cor
+    -> add a grupos
+    -> smart config
+fluxograma:
+inicia sem grupo, ao conectar ao mqtt, publica get grupo para receber qual grupo pertence.
+Essa informação virá do banco
+app:
+->conectar wifi
+->banco
+mac|rvalor|gvalor|bvalor|grupo|executou ou não a ação|apelido|cliente
+ex: aabbccddee|255|255|255|grupo 01|1|led sala 01|farmacia abc
+->html page
+página 01:
+botão listar luminárias (macs)
+botão listar grupos
+botão cadastrar nova luminária (vai ter um grupo default chamado "sem grupo") -> As luminarias já irão cadastradas p o cliente. com o nome do cliente
+botão criar grupo (listar as luminarias para add ao grupo)
+botão editar grupo(add e retirar luminárias)
+botão apagar grupo
+->app nodejs:
+se conectar ao broker;
+ler o banco direto
+ao receber atualização do banco (executou ação = 0), publicar no broker enquanto não recebe a confirmação do esp32.
+Ao recber confirmação, mudar o campo para 1;
+Se receber: /mac/getGrupo -> buscar no banco qual o grupo que a luminária pertence.
